@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "welovekpop.club",
+  "description": "The üWave instance running on https://welovekpop.club.",
+  "homepage": "https://welovekpop.club/",
+  "dependencies": {},
+  "devDependencies": {}
+}
