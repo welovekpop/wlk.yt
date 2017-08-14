@@ -3,6 +3,17 @@
   "name": "welovekpop.club",
   "description": "The üWave instance running on https://welovekpop.club.",
   "homepage": "https://welovekpop.club/",
-  "dependencies": {},
+  "dependencies": {
+    "bugsnag": "^1.12.0",
+    "compression": "^1.7.0",
+    "express": "^4.15.4",
+    "u-wave-announce": "^0.1.0",
+    "u-wave-api-v1": "^0.2.2",
+    "u-wave-core": "^0.2.2",
+    "u-wave-source-soundcloud": "^1.1.0",
+    "u-wave-source-youtube": "^1.1.1",
+    "u-wave-web": "github:welovekpop/uwave-web-welovekpop.club#wlk-instance",
+    "u-wave-web-emojione": "^2.0.0"
+  },
   "devDependencies": {}
 }
