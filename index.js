@@ -72,6 +72,8 @@ app.use(serveStatic('./public'));
 
 app.use('/v1', createWebApi(uw, {
   secret: config.secret,
+  mailTransport: config.mailTransport,
+  createPasswordResetEmail: config.createPasswordResetEmail,
   // The web API needs an HTTP server to attach the WebSocket server to.
   server,
   recaptcha: config.recaptcha
