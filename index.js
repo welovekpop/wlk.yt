@@ -10,7 +10,7 @@ const uwave = require('u-wave-core');
 const createWebApi = require('u-wave-api-v1');
 const createWebClient = require('u-wave-web/middleware').default;
 const emojione = require('u-wave-web-emojione');
-// const aprilFools = require('@wlk/u-wave-random-playlists');
+const waitlistRoulette = require('@wlk/u-wave-random-playlists');
 const announce = require('u-wave-announce');
 
 const ytSource = require('u-wave-source-youtube');
@@ -49,7 +49,7 @@ uw.use(announce({
   seed: config.announceSeed
 }));
 
-// uw.use(aprilFools());
+uw.use(waitlistRoulette());
 
 uw.source('youtube', ytSource, {
   key: config.youtube.key,
