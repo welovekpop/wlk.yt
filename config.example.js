@@ -56,6 +56,11 @@ exports.recaptcha = {
 };
 
 /**
+ * Document title for the web client. This will be shown in the browser tab.
+ */
+exports.title = 'üWave';
+
+/**
  * Path to the custom emoji directory.
  */
 exports.customEmoji = path.join(__dirname, 'custom-emoji');

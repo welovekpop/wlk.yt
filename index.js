@@ -89,6 +89,7 @@ const customEmoji = readdirSync(config.customEmoji).reduce((o, name) => {
 
 app.use(createWebClient(uw, {
   apiBase: '/v1',
+  title: config.title,
   emoji: Object.assign(
     {},
     emojione.emoji,
