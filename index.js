@@ -76,7 +76,21 @@ app.use('/v1', createWebApi(uw, {
   createPasswordResetEmail: config.createPasswordResetEmail,
   // The web API needs an HTTP server to attach the WebSocket server to.
   server,
-  recaptcha: config.recaptcha
+  recaptcha: config.recaptcha,
+  onError(req, error) {
+    Bugsnag.notify(error, {
+      severity: error.status && error.status >= 500 && error.status < 600
+        ? 'error'
+        : 'warning',
+      user: req.user ? {
+        id: req.user.id,
+        name: req.user.username
+      } : {
+        id: req.ip
+      },
+      context: `api: ${req.url}`
+    });
+  }
 }));
 
 app.use('/assets/emoji/', serveStatic(config.customEmoji));
