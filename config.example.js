@@ -121,7 +121,7 @@ exports.createPasswordResetEmail = (opts) => {
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="initial-scale=1.0">
       </head>
-      <body bgcolor="#151515" style="margin: 0; color: #ffffff; font-family: 'Open Sans', sans-serif; font-size: 16px;">
+      <body bgcolor="#151515" style="margin: 0; background: #151515; color: #ffffff; font-family: 'Open Sans', sans-serif; font-size: 16px;">
         <div style="margin: auto; max-width: 600px;">
           <img src="data:image/png;base64,${logo}" alt="WE ♥ KPOP" style="${logoStyle}" />
 
