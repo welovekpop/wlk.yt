@@ -7,7 +7,7 @@ const express = require('express');
 const Bugsnag = require('bugsnag');
 const Redis = require('ioredis');
 const uwave = require('u-wave-core');
-const createWebApi = require('u-wave-api-v1');
+const createHttpApi = require('u-wave-http-api');
 const createWebClient = require('u-wave-web/middleware').default;
 const emojione = require('u-wave-web-emojione');
 const waitlistRoulette = require('@wlk/u-wave-random-playlists');
@@ -70,7 +70,7 @@ app.use(compression());
 
 app.use(serveStatic('./public'));
 
-app.use('/v1', createWebApi(uw, {
+app.use('/v1', createHttpApi(uw, {
   secret: config.secret,
   mailTransport: config.mailTransport,
   createPasswordResetEmail: config.createPasswordResetEmail,
