@@ -51,14 +51,14 @@ uw.use(announce({
 
 uw.use(waitlistRoulette());
 
-uw.source('youtube', ytSource, {
+uw.source(ytSource, {
   key: config.youtube.key,
   search: {
     videoSyndicated: 'any'
   }
 });
 
-uw.source('soundcloud', scSource, {
+uw.source(scSource, {
   key: config.soundcloud.key
 });
 
@@ -102,14 +102,14 @@ const customEmoji = readdirSync(config.customEmoji).reduce((o, name) => {
 }, {});
 
 app.use(createWebClient(uw, {
-  apiBase: '/v1',
+  apiUrl: '/v1',
   title: config.title,
   emoji: Object.assign(
     {},
     emojione.emoji,
     customEmoji
   ),
-  recaptcha: { key: config.recaptcha.key }
+  recaptcha: config.recaptcha && { key: config.recaptcha.key }
 }));
 
 app.use(Bugsnag.errorHandler);
