@@ -26,14 +26,16 @@ const uw = uwave({
 });
 
 uw.use(announce({
-  url: 'https://welovekpop.club/m.html',
-  socketUrl: 'wss://welovekpop.club/',
-  apiUrl: 'https://welovekpop.club/v1',
-  name: 'WE ♥ KPOP',
+  url: 'https://wlk.yt/',
+  socketUrl: 'wss://wlk.yt/',
+  apiUrl: 'https://wlk.yt/v1',
+  name: 'WLK',
   subtitle: 'International K-Pop community.',
   description: `
-    WE ♥ KPOP is a Korean music dedicated community founded in 2014 on plug.dj.
-    It was reborn in 2016 on its own collaborative listening software üWave.
+    WLK is a community dedicated to sharing the best South Korean music.
+    Listen to what other people play live from YouTube and SoundCloud,
+    share your opinion by talking to others and contribute to each day&#39;s
+    unique playlist by hand-picking tracks yourself.
 
     ## Rules
 
