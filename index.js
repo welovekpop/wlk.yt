@@ -1,5 +1,4 @@
 const path = require('path');
-const { Buffer } = require('buffer');
 const { readdirSync } = require('fs');
 const compression = require('compression');
 const serveStatic = require('serve-static');
@@ -8,7 +7,7 @@ const Bugsnag = require('bugsnag');
 const Redis = require('ioredis');
 const uwave = require('u-wave-core');
 const createHttpApi = require('u-wave-http-api');
-const createWebClient = require('u-wave-web/middleware').default;
+const createWebClient = require('@wlk/client/middleware').default;
 const emojione = require('u-wave-web-emojione');
 const waitlistRoulette = require('@wlk/u-wave-random-playlists');
 const announce = require('u-wave-announce');
