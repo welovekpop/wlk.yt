@@ -5,7 +5,7 @@
   "homepage": "https://wlk.yt/",
   "bin": "./index.js",
   "dependencies": {
-    "@wlk/client": "github:welovekpop/wlk.yt-client",
+    "@wlk/client": "^1.4.4",
     "@wlk/u-wave-random-playlists": "^1.0.2",
     "bugsnag": "^2.3.1",
     "compression": "^1.7.2",
