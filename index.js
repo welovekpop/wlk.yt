@@ -22,7 +22,7 @@ Bugsnag.register(config.bugsnag);
 
 const uw = uwave({
   redis: new Redis(config.redisPort),
-  mongo: config.mongo
+  mongo: config.mongo,
 });
 
 uw.use(announce({
@@ -47,7 +47,7 @@ uw.use(announce({
     6. Chat in English!
     7. Don't spam the chat.
   `,
-  seed: config.announceSeed
+  seed: config.announceSeed,
 }));
 
 uw.use(waitlistRoulette());
@@ -55,12 +55,12 @@ uw.use(waitlistRoulette());
 uw.source(ytSource, {
   key: config.youtube.key,
   search: {
-    videoSyndicated: 'any'
-  }
+    videoSyndicated: 'any',
+  },
 });
 
 uw.source(scSource, {
-  key: config.soundcloud.key
+  key: config.soundcloud.key,
 });
 
 const app = express();
@@ -85,13 +85,13 @@ app.use('/v1', createHttpApi(uw, {
         : 'warning',
       user: req.user ? {
         id: req.user.id,
-        name: req.user.username
+        name: req.user.username,
       } : {
-        id: req.ip
+        id: req.ip,
       },
-      context: `api: ${req.url}`
+      context: `api: ${req.url}`,
     });
-  }
+  },
 }));
 
 app.use('/assets/emoji/', serveStatic(config.customEmoji));
@@ -108,9 +108,9 @@ app.use(createWebClient(uw, {
   emoji: Object.assign(
     {},
     emojione.emoji,
-    customEmoji
+    customEmoji,
   ),
-  recaptcha: config.recaptcha && { key: config.recaptcha.key }
+  recaptcha: config.recaptcha && { key: config.recaptcha.key },
 }));
 
 app.use(Bugsnag.errorHandler);
