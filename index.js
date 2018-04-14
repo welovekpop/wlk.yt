@@ -20,7 +20,7 @@ const configPath = process.argv[2] || './config';
 const config = require(path.resolve(process.cwd(), configPath));
 
 Bugsnag.register(config.bugsnag, {
-  appVersion: gitRev.short(),
+  appVersion: gitRev.short(__dirname),
 });
 
 const uw = uwave({
