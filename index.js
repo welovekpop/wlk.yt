@@ -1,5 +1,6 @@
 const path = require('path');
 const { readdirSync } = require('fs');
+const gitRev = require('git-rev-sync');
 const compression = require('compression');
 const serveStatic = require('serve-static');
 const express = require('express');
@@ -11,14 +12,15 @@ const createWebClient = require('@wlk/client/middleware').default;
 const emojione = require('u-wave-web-emojione');
 const waitlistRoulette = require('@wlk/u-wave-random-playlists');
 const announce = require('u-wave-announce');
-
 const ytSource = require('u-wave-source-youtube');
 const scSource = require('u-wave-source-soundcloud');
 
 const configPath = process.argv[2] || './config';
 const config = require(path.resolve(process.cwd(), configPath));
 
-Bugsnag.register(config.bugsnag);
+Bugsnag.register(config.bugsnag, {
+  appVersion: gitRev.short(),
+});
 
 const uw = uwave({
   redis: new Redis(config.redisPort),
