@@ -1,3 +1,4 @@
+require('source-map-support').install();
 const path = require('path');
 const { readdirSync } = require('fs');
 const gitRev = require('git-rev-sync');
