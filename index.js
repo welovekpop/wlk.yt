@@ -7,6 +7,7 @@ const serveStatic = require('serve-static');
 const express = require('express');
 const Bugsnag = require('bugsnag');
 const Redis = require('ioredis');
+const md5 = require('md5-hex');
 const uwave = require('u-wave-core');
 const createHttpApi = require('u-wave-http-api');
 const createWebClient = require('@wlk/client/middleware').default;
@@ -90,7 +91,9 @@ app.use('/v1', createHttpApi(uw, {
         id: req.user.id,
         name: req.user.username,
       } : {
-        id: req.ip,
+        // Pseudonymise so we can still track if it's a single user having
+        // this issue or many.
+        id: md5(req.ip).slice(0, 7),
       },
       context: `api: ${req.url}`,
     });
