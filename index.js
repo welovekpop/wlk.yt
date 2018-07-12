@@ -75,7 +75,7 @@ app.use(compression());
 
 app.use(serveStatic('./public'));
 
-app.use('/v1', createHttpApi(uw, {
+const httpApi = createHttpApi(uw, {
   secret: config.secret,
   mailTransport: config.mailTransport,
   createPasswordResetEmail: config.createPasswordResetEmail,
@@ -98,7 +98,10 @@ app.use('/v1', createHttpApi(uw, {
       context: `api: ${req.url}`,
     });
   },
-}));
+});
+app.use('/v1', httpApi);
+// https://github.com/u-wave/web/issues/1068
+app.use('/api', httpApi);
 
 app.use('/assets/emoji/', serveStatic(config.customEmoji));
 app.use('/assets/emoji/', emojione.middleware());
