@@ -8,7 +8,7 @@ exports.mongo = 'mongodb://localhost:27017/uwave';
 /**
  * URL of the Redis database.
  */
-exports.redisPort = 'redis://localhost:6379/';
+exports.redis = 'redis://localhost:6379/';
 
 /**
  * Bugsnag API key.

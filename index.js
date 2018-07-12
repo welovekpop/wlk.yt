@@ -6,7 +6,6 @@ const compression = require('compression');
 const serveStatic = require('serve-static');
 const express = require('express');
 const Bugsnag = require('bugsnag');
-const Redis = require('ioredis');
 const md5 = require('md5-hex');
 const uwave = require('u-wave-core');
 const createHttpApi = require('u-wave-http-api');
@@ -25,7 +24,7 @@ Bugsnag.register(config.bugsnag, {
 });
 
 const uw = uwave({
-  redis: new Redis(config.redisPort),
+  redis: config.redis,
   mongo: config.mongo,
 });
 
