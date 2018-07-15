@@ -8,7 +8,7 @@ const express = require('express');
 const Bugsnag = require('bugsnag');
 const md5 = require('md5-hex');
 const uwave = require('u-wave-core');
-const createHttpApi = require('u-wave-http-api');
+const { createHttpApi, createSocketServer } = require('u-wave-http-api');
 const createWebClient = require('@wlk/client/middleware').default;
 const emojione = require('u-wave-web-emojione');
 const waitlistRoulette = require('@wlk/u-wave-random-playlists');
@@ -78,8 +78,6 @@ const httpApi = createHttpApi(uw, {
   secret: config.secret,
   mailTransport: config.mailTransport,
   createPasswordResetEmail: config.createPasswordResetEmail,
-  // The web API needs an HTTP server to attach the WebSocket server to.
-  server,
   recaptcha: config.recaptcha,
   onError(req, error) {
     Bugsnag.notify(error, {
@@ -101,6 +99,11 @@ const httpApi = createHttpApi(uw, {
 app.use('/v1', httpApi);
 // https://github.com/u-wave/web/issues/1068
 app.use('/api', httpApi);
+
+createSocketServer(uw, {
+  server,
+  secret: config.secret,
+});
 
 app.use('/assets/emoji/', serveStatic(config.customEmoji));
 app.use('/assets/emoji/', emojione.middleware());
