@@ -7,6 +7,7 @@
   "dependencies": {
     "@wlk/client": "^1.10.0",
     "@wlk/u-wave-random-playlists": "^2.0.0",
+    "appmetrics-dash": "^4.0.0",
     "bugsnag": "^2.4.3",
     "compression": "^1.7.2",
     "express": "^4.16.3",

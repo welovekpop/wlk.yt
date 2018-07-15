@@ -1,4 +1,5 @@
-require('source-map-support').install();
+require('appmetrics-dash').attach();
+
 const path = require('path');
 const { readdirSync } = require('fs');
 const gitRev = require('git-rev-sync');
